@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCo — Smart choice is health</title>
+    <meta name="description"
+        content="MediCo - High-quality healthcare, experienced doctors, and modern clinical services. Book your consultation online.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/258800000000" class="wa-float" target="_blank" title="WhatsApp"
+        aria-label="Contactar pelo WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar-main" id="navbar" aria-label="Main Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                MediCo<span class="brand-reg">®</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Doctors</a></li>
+                <li><a href="#servicos">Platform</a></li>
+                <li><a href="#como-funciona">Solutions</a></li>
+                <li><a href="#depoimentos">Articles</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="login.html" class="nav-signin">Sign in</a>
+                <a href="login.html" class="nav-signup">Sign up</a>
+            </div>
+            <button class="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="nav-overlay"></div>
+
+    <!-- HERO -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="container">
+            <div class="row">
+                <div class="hero-text-col">
+                    <h1 id="hero-title">
+                        Smart choice is health
+                        <span class="inline-circle-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="serif-italic">over everything</span>
+                    </h1>
+                    <p class="hero-desc">
+                        Choosing health above all is a smart investment in your future. When you prioritize your well-being more smoothly
+                    </p>
+                    <div class="hero-actions">
+                        <a href="login.html" class="btn-medico-primary">
+                            Get Consultation
+                            <span class="btn-arrow">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </a>
+                        <a href="#sobre" class="btn-medico-link">
+                            Learn More
+                            <span class="link-arrow">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-media-col">
+                    <!-- Rotating Explore Badge -->
+                    <div class="explore-seal">
+                        <svg class="explore-text" viewBox="0 0 100 100">
+                            <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
+                            <text>
+                                <textPath href="#circlePath" startOffset="0%">
+                                    EXPLORE MORE • EXPLORE MORE • EXPLORE MORE •
+                                </textPath>
+                            </text>
+                        </svg>
+                        <div class="explore-center-flower">
+                            <svg class="flower-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12,0 C12.8,4 16,4 16,6 C16,8 14,9 12,9 C10,9 8,8 8,6 C8,4 11.2,0 12,0 Z M12,24 C11.2,20 8,20 8,18 C8,16 10,15 12,15 C14,15 16,16 16,18 C16,20 12.8,24 12,24 Z M0,12 C4,12.8 4,16 6,16 C8,16 9,14 9,12 C9,10 8,8 6,8 C4,8 0,11.2 0,12 Z M24,12 C20,11.2 20,8 18,8 C16,8 15,10 15,12 C15,14 16,16 18,16 C20,16 24,12.8 24,12 Z M3.5,3.5 C6.3,5.5 6.3,8.7 7.7,9.1 C9.1,9.5 9.8,8.2 9.1,6.8 C8.4,5.4 6.3,1.7 3.5,3.5 Z M20.5,20.5 C17.7,18.5 17.7,15.3 16.3,14.9 C14.9,14.5 14.2,15.8 14.9,17.2 C15.6,18.6 17.7,22.3 20.5,20.5 Z M3.5,20.5 C5.5,17.7 8.7,17.7 9.1,16.3 C9.5,14.9 8.2,14.2 6.8,14.9 C5.4,15.6 1.7,17.7 3.5,20.5 Z M20.5,3.5 C18.5,6.3 15.3,6.3 14.9,7.7 C14.5,9.1 15.8,9.8 17.2,9.1 C18.6,8.4 22.3,6.3 20.5,3.5 Z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Image Card with Gradient Background -->
+                    <div class="doctor-card-wrapper">
+                        <img src="assets/img/medico-doctor.png" alt="Doctor Portrait" class="doctor-img" loading="eager">
+                        
+                        <!-- Floating Visited Badge -->
+                        <div class="visited-badge">
+                            <span class="badge-title">Latest Visited Doctors</span>
+                            <div class="badge-doctors">
+                                <div class="avatar-stack">
+                                    <div class="avatar av-1">
+                                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="16" fill="#F472B6"/>
+                                            <circle cx="16" cy="12" r="5" fill="#FFF"/>
+                                            <path d="M7 25C7 19.5 11 16 16 16C21 16 25 19.5 25 25" fill="#FFF"/>
+                                        </svg>
+                                    </div>
+                                    <div class="avatar av-2">
+                                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="16" fill="#60A5FA"/>
+                                            <circle cx="16" cy="12" r="5" fill="#FFF"/>
+                                            <path d="M7 25C7 19.5 11 16 16 16C21 16 25 19.5 25 25" fill="#FFF"/>
+                                        </svg>
+                                    </div>
+                                    <div class="avatar av-3">
+                                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="32" height="32" rx="16" fill="#34D399"/>
+                                            <circle cx="16" cy="12" r="5" fill="#FFF"/>
+                                            <path d="M7 25C7 19.5 11 16 16 16C21 16 25 19.5 25 25" fill="#FFF"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <span class="badge-more">+6 more</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES STRIP -->
+    <div class="features-strip">
+        <div class="container">
+            <div class="features-grid reveal-scale">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-tag"></i></div>
+                    <div>
+                        <h6>Preços acessíveis</h6>
+                        <p>Planos de saúde para todas as famílias</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+                    <div>
+                        <h6>Médicos experientes</h6>
+                        <p>Especialistas com anos de prática clínica</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-thumbs-up"></i></div>
+                    <div>
+                        <h6>Serviço de qualidade</h6>
+                        <p>Atendimento humano e personalizado</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-laptop-medical"></i></div>
+                    <div>
+                        <h6>Marcação online</h6>
+                        <p>Agende a qualquer hora, de qualquer lugar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about-section section-padding" id="sobre" aria-labelledby="about-title">
+        <div class="container">
+            <div class="about-grid">
+                <div class="reveal-left">
+                    <div class="about-img-wrapper">
+                        <img src="assets/img/clinic-interior.png" alt="Instalações modernas da VitaClinic"
+                            loading="lazy">
+                        <div class="about-experience">
+                            <div class="number" data-target="10+">0</div>
+                            <span>Anos de<br>experiência</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="section-label">Sobre nós</div>
+                    <h2 id="about-title" class="section-title">A clínica de saúde em que pode confiar</h2>
+                    <p class="section-sub">
+                        Desde 2010, a VitaClinic tem cuidado de milhares de famílias em Maputo com dedicação, rigor e
+                        carinho. Acreditamos que saúde é uma relação de confiança construída no dia a dia.
+                    </p>
+                    <ul class="check-list">
+                        <li>
+                            <span class="check-icon"><i class="fas fa-check"></i></span>
+                            Equipamentos modernos e actualizados regularmente
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fas fa-check"></i></span>
+                            Consulta presencial e por telemedicina disponível
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fas fa-check"></i></span>
+                            Resultados de exames online em até 24 horas
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fas fa-check"></i></span>
+                            Atendimento sempre monitorizado e seguro
+                        </li>
+                    </ul>
+                    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                        <a href="login.html" class="btn-primary-custom"><i class="fas fa-calendar-check"></i> Marcar
+                            Consulta</a>
+                        <a href="#servicos" class="btn-outline-custom">Ver Serviços</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services-section section-padding" id="servicos" aria-labelledby="services-title">
+        <div class="container">
+            <div class="services-header">
+                <div>
+                    <div class="section-label">O que oferecemos</div>
+                    <h2 id="services-title" class="section-title">Serviços pensados para a sua saúde</h2>
+                </div>
+                <div>
+                    <p class="section-sub">Cuidados completos para toda a família, com foco na qualidade e no conforto
+                        do paciente.</p>
+                </div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal delay-1">
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="icon-wrap"><i class="fas fa-stethoscope"></i></div>
+                    <h5>Clínica Geral</h5>
+                    <p>Avaliação completa do seu estado de saúde com médicos experientes. Check-ups regulares para toda
+                        a família.</p>
+                </div>
+                <div class="service-card reveal delay-2">
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="icon-wrap"><i class="fas fa-heart"></i></div>
+                    <h5>Cardiologia</h5>
+                    <p>Diagnóstico e tratamento de doenças cardiovasculares com equipamentos de última geração.</p>
+                </div>
+                <div class="service-card reveal delay-3">
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="icon-wrap"><i class="fas fa-flask"></i></div>
+                    <h5>Exames Laboratoriais</h5>
+                    <p>Análises clínicas precisas e rápidas. Resultados disponíveis online em menos de 24 horas.</p>
+                </div>
+                <div class="service-card reveal delay-1">
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="icon-wrap"><i class="fas fa-laptop-medical"></i></div>
+                    <h5>Telemedicina</h5>
+                    <p>Consultas por videochamada com a mesma qualidade do atendimento presencial. Praticidade total.
+                    </p>
+                </div>
+                <div class="service-card reveal delay-2">
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="icon-wrap"><i class="fas fa-baby"></i></div>
+                    <h5>Pediatria</h5>
+                    <p>Cuidados especializados para os mais pequenos, num ambiente acolhedor e totalmente seguro.</p>
+                </div>
+                <div class="service-card reveal delay-3">
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                    <div class="icon-wrap"><i class="fas fa-x-ray"></i></div>
+                    <h5>Imagiologia</h5>
+                    <p>Raio-X, ecografia e outros exames com tecnologia avançada e laudos detalhados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIALTIES -->
+    <section class="specialties-section section-padding" id="especialidades" aria-labelledby="specialties-title">
+        <div class="container">
+            <div style="text-align:center;margin-bottom:48px;">
+                <div class="section-label" style="justify-content:center;">Especialidades médicas</div>
+                <h2 id="specialties-title" class="section-title">Mais de 25 especialidades disponíveis</h2>
+                <p class="section-sub" style="margin:0 auto;">Equipa multidisciplinar para cuidar de si em todas as
+                    fases da vida.</p>
+            </div>
+            <div class="specialties-grid">
+                <div class="specialty-pill reveal delay-1">
+                    <div class="spec-icon"><i class="fas fa-brain"></i></div><span>Neurologia</span>
+                </div>
+                <div class="specialty-pill reveal delay-2">
+                    <div class="spec-icon"><i class="fas fa-bone"></i></div><span>Ortopedia</span>
+                </div>
+                <div class="specialty-pill reveal delay-3">
+                    <div class="spec-icon"><i class="fas fa-eye"></i></div><span>Oftalmologia</span>
+                </div>
+                <div class="specialty-pill reveal delay-4">
+                    <div class="spec-icon"><i class="fas fa-venus"></i></div><span>Ginecologia</span>
+                </div>
+                <div class="specialty-pill reveal delay-1">
+                    <div class="spec-icon"><i class="fas fa-lungs"></i></div><span>Pneumologia</span>
+                </div>
+                <div class="specialty-pill reveal delay-2">
+                    <div class="spec-icon"><i class="fas fa-tooth"></i></div><span>Odontologia</span>
+                </div>
+                <div class="specialty-pill reveal delay-3">
+                    <div class="spec-icon"><i class="fas fa-allergies"></i></div><span>Dermatologia</span>
+                </div>
+                <div class="specialty-pill reveal delay-4">
+                    <div class="spec-icon"><i class="fas fa-heart"></i></div><span>Cardiologia</span>
+                </div>
+                <div class="specialty-pill reveal delay-1">
+                    <div class="spec-icon"><i class="fas fa-baby"></i></div><span>Pediatria</span>
+                </div>
+                <div class="specialty-pill reveal delay-2">
+                    <div class="spec-icon"><i class="fas fa-user-md"></i></div><span>Medicina Interna</span>
+                </div>
+                <div class="specialty-pill reveal delay-3">
+                    <div class="spec-icon"><i class="fas fa-dna"></i></div><span>Endocrinologia</span>
+                </div>
+                <div class="specialty-pill reveal delay-4">
+                    <div class="spec-icon"><i class="fas fa-plus-circle"></i></div><span>+14 especialidades</span>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:48px;">
+                <a href="login.html" class="btn-primary-custom"><i class="fas fa-calendar-check"></i> Ver Todas as
+                    Especialidades</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="hiw-section section-padding" id="como-funciona" aria-labelledby="hiw-title">
+        <div class="container">
+            <div class="hiw-grid">
+                <div class="reveal-left">
+                    <div class="section-label">Simples e rápido</div>
+                    <h2 id="hiw-title" class="section-title">Como marcar a sua consulta</h2>
+                    <p class="section-sub" style="margin-bottom:32px;">Em 4 passos, cuide da sua saúde sem complicações.
+                    </p>
+                    <div class="steps-container">
+                        <div class="steps-line"></div>
+                        <div class="step-item reveal delay-1">
+                            <div class="step-num">1</div>
+                            <div class="step-body">
+                                <h5>Crie a sua conta</h5>
+                                <p>Registo rápido e gratuito. Menos de 2 minutos e já está pronto para marcar.</p>
+                            </div>
+                        </div>
+                        <div class="step-item reveal delay-2">
+                            <div class="step-num">2</div>
+                            <div class="step-body">
+                                <h5>Escolha a especialidade</h5>
+                                <p>Selecione o médico e a especialidade que mais se adequa às suas necessidades.</p>
+                            </div>
+                        </div>
+                        <div class="step-item reveal delay-3">
+                            <div class="step-num">3</div>
+                            <div class="step-body">
+                                <h5>Escolha o horário</h5>
+                                <p>Consultas presenciais ou por telemedicina — no dia e hora que for conveniente.</p>
+                            </div>
+                        </div>
+                        <div class="step-item reveal delay-4">
+                            <div class="step-num">4</div>
+                            <div class="step-body">
+                                <h5>Compareça ou conecte-se</h5>
+                                <p>Venha à clínica ou aceda online. O cuidado que merece, como preferir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="hiw-img-wrapper">
+                        <img src="assets/img/medical-team.png" alt="Equipa médica da VitaClinic" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section section-padding" id="depoimentos" aria-labelledby="testimonials-title">
+        <div class="container">
+            <div style="text-align:center;margin-bottom:48px;">
+                <div class="section-label" style="justify-content:center;">Depoimentos</div>
+                <h2 id="testimonials-title" class="section-title">O que dizem os nossos pacientes</h2>
+                <p class="section-sub" style="margin:0 auto;">A confiança de quem nos escolhe é o nosso maior orgulho.
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal delay-1">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Atendimento fantástico! A equipa foi incrivelmente atenciosa e profissional. Recomendo a
+                        VitaClinic a toda a minha família."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MA</div>
+                        <div>
+                            <strong>Maria Amelia</strong>
+                            <span>Paciente desde 2019</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal delay-2">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"A marcação online tornou tudo mais fácil. Resultados rápidos e um ambiente muito acolhedor.
+                        Excelente clínica!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JN</div>
+                        <div>
+                            <strong>João Nhaca</strong>
+                            <span>Paciente desde 2021</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal delay-3">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"A telemedicina da VitaClinic é perfeita. Consegui consultar um especialista sem sair de casa.
+                        Serviço 5 estrelas!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">FC</div>
+                        <div>
+                            <strong>Fátima Cossa</strong>
+                            <span>Paciente desde 2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="agendar" aria-labelledby="cta-title">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2 id="cta-title">Pronto para cuidar da sua saúde?</h2>
+                <p class="cta-desc">A VitaClinic está pronta para o receber. Equipa dedicada, instalações modernas e um
+                    atendimento que trata cada paciente como único.</p>
+                <div class="cta-actions">
+                    <a href="login.html" class="btn-white"><i class="fas fa-calendar-check"></i> Marcar Consulta</a>
+                    <a href="tel:+258800000000" class="btn-ghost-white"><i class="fas fa-phone-alt"></i> Ligar Agora</a>
+                </div>
+                <div class="cta-perks">
+                    <div class="cta-perk"><i class="fas fa-check"></i> Sem taxas de adesão</div>
+                    <div class="cta-perk"><i class="fas fa-check"></i> Atendimento imediato</div>
+                    <div class="cta-perk"><i class="fas fa-check"></i> Resultados online</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <span class="brand-icon"><i class="fas fa-plus" style="font-size:0.8rem;color:#fff;"></i></span>
+                        VitaClinic
+                    </div>
+                    <p>Cuidados de saúde com excelência, tecnologia e humanização. A sua saúde é a nossa prioridade.</p>
+                    <div class="social-row">
+                        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/258800000000" class="social-btn" target="_blank" aria-label="WhatsApp"><i
+                                class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-heading">Navegação</div>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#especialidades">Especialidades</a></li>
+                        <li><a href="#como-funciona">Como Funciona</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-heading">Especialidades</div>
+                    <ul class="footer-links">
+                        <li><a href="#">Clínica Geral</a></li>
+                        <li><a href="#">Cardiologia</a></li>
+                        <li><a href="#">Pediatria</a></li>
+                        <li><a href="#">Telemedicina</a></li>
+                        <li><a href="#">Ver todas →</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-heading">Contactos</div>
+                    <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>J. Pinheiro Fão, 18,
+                            Maputo</span></div>
+                    <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+258 80 000 0000</span></div>
+                    <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>info@vitaclinic.co.mz</span>
+                    </div>
+                    <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Seg–Sáb: 7h às 20h</span></div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                <span>© 2026 VitaClinic. Todos os direitos reservados.</span>
+                <span>
+                    <a href="#">Política de Privacidade</a> &nbsp;·&nbsp;
+                    <a href="#">Termos de Uso</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
