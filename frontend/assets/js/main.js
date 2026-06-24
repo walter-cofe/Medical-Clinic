@@ -130,7 +130,7 @@ serviceCards.forEach(card => {
     });
 });
 
-document.querySelectorAll('.btn-primary-custom, .btn-white, .btn-medico-primary, .nav-signup, .btn-login-submit').forEach(btn => {
+document.querySelectorAll('.btn-primary-custom, .btn-white, .btn-ghost-white, .btn-medico-primary, .nav-signup, .btn-login-submit').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
         const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
@@ -194,3 +194,26 @@ window.addEventListener('scroll', () => {
         }
     });
 }, { passive: true });
+
+// ===== SESSION-AWARE NAVBAR =====
+// Dynamically update navbar based on login state
+(function updateNavbarForSession() {
+    // auth.js must be loaded first — we defer with a small timeout
+    setTimeout(() => {
+        if (typeof window.MediCo === 'undefined') return;
+        const user = window.MediCo.Auth.getSession();
+        const navActions = document.querySelector('.nav-actions');
+        if (!navActions) return;
+
+        if (user) {
+            const firstName = user.name.split(' ')[0];
+            navActions.innerHTML = `
+                <a href="dashboard.html" class="nav-signin" style="display:flex;align-items:center;gap:8px;">
+                    <span style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#5C4FEB,#EC4899);display:inline-flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;letter-spacing:0.5px;">${user.avatar}</span>
+                    ${firstName}
+                </a>
+                <a href="dashboard.html" class="nav-signup">Dashboard</a>`;
+        }
+        // If not logged in, leave the default Sign in / Sign up buttons unchanged
+    }, 50);
+})();

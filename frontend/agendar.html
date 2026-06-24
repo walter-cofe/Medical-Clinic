@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Marque a sua consulta médica online em poucos passos — MediCo.">
+<title>Marcar Consulta — MediCo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+
+  --ink:#15132E;
+  --ink-mid:#2E2A57;
+  --indigo:#5B4FE8;
+  --indigo-dark:#4A3FD0;
+  --indigo-light:#EEECFF;
+  --mint:#00B894;
+  --mint-dark:#00916F;
+  --mint-light:#E7F8F3;
+  --coral:#FB6F92;
+  --coral-light:#FFE9EE;
+  --slate:#69658A;
+  --slate-light:#A7A3C7;
+  --border:#E7E4F6;
+  --bg:#FAF9FE;
+  --white:#FFFFFF;
+  --red:#EF4444;
+  --red-bg:#FEF2F2;
+  --text:#15132E;
+  --ease:cubic-bezier(0.4,0,0.2,1);
+  --t:.22s var(--ease);
+  --shadow-card:0 16px 48px rgba(21,19,46,.08);
+  --shadow-card-lg:0 20px 56px rgba(21,19,46,.12);
+  --shadow-brand:0 10px 26px rgba(91,79,232,.28);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--slate);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+.mono{font-family:'JetBrains Mono',monospace}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:3px;border-radius:4px}
+
+/* ── NAVBAR ─────────── */
+.navbar-main{position:fixed;inset:0 0 auto;z-index:200;transition:all .3s var(--ease)}
+.navbar-main .container{display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 40px}
+.navbar-main.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border)}
+.navbar-brand{font-size:1.4rem;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-1px}
+.brand-reg{font-size:.6em;color:var(--coral);vertical-align:super}
+.back-home-btn{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;color:var(--slate);text-decoration:none;padding:8px 20px;border-radius:50px;border:1.5px solid var(--border);transition:all var(--t)}
+.back-home-btn:hover{color:var(--indigo);border-color:var(--indigo);background:var(--indigo-light)}
+.back-home-btn i{font-size:.75rem}
+
+/* ── HERO ─────────── */
+.booking-hero{padding:140px 0 0;background:var(--white);position:relative;overflow:hidden}
+.booking-hero::before{content:'';position:absolute;top:-180px;right:-180px;width:620px;height:620px;background:radial-gradient(circle,rgba(91,79,232,.08) 0%,transparent 70%);pointer-events:none}
+.booking-hero::after{content:'';position:absolute;top:60px;right:340px;width:340px;height:340px;background:radial-gradient(circle,rgba(251,111,146,.07) 0%,transparent 70%);pointer-events:none}
+.booking-hero .container{padding:0 40px;max-width:1200px;margin:0 auto;position:relative}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--indigo-dark);margin-bottom:20px}
+.hero-dot{width:6px;height:6px;background:var(--mint);border-radius:50%;animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-title{font-size:clamp(2.8rem,6vw,5rem);font-weight:800;color:var(--ink);letter-spacing:-2px;line-height:1;margin-bottom:16px;max-width:640px}
+.hero-title .serif{font-family:'Playfair Display',serif;font-weight:400;font-style:italic;color:var(--indigo)}
+.hero-sub{font-size:1rem;color:var(--slate);max-width:420px;line-height:1.8;margin-bottom:28px}
+
+/* trust strip */
+.trust-strip{display:flex;align-items:center;gap:14px;margin-bottom:48px}
+.trust-avatars{display:flex}
+.t-avt{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2.5px solid #fff;margin-left:-9px;font-size:.7rem;color:#fff}
+.t-avt:first-child{margin-left:0}
+.t-avt.c1{background:var(--indigo)}
+.t-avt.c2{background:var(--mint)}
+.t-avt.c3{background:var(--coral)}
+.trust-text{font-size:.8rem;color:var(--slate)}
+.trust-text strong{color:var(--ink)}
+
+/* decorative rotating trust ring (signature element) */
+.trust-ring{position:absolute;top:6px;right:64px;width:128px;height:128px;pointer-events:none}
+.ring-svg{width:100%;height:100%;animation:ringspin 22s linear infinite}
+@keyframes ringspin{to{transform:rotate(360deg)}}
+.ring-text{font-family:'Inter',sans-serif;font-weight:700;font-size:9.5px;letter-spacing:2.4px;fill:var(--indigo);text-transform:uppercase}
+.ring-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.ring-center span{width:38px;height:38px;border-radius:50%;background:var(--coral-light);color:var(--coral);display:flex;align-items:center;justify-content:center;font-size:.95rem;animation:ringpulse 2.6s ease infinite}
+@keyframes ringpulse{0%,100%{box-shadow:0 0 0 0 rgba(251,111,146,.32)}50%{box-shadow:0 0 0 9px rgba(251,111,146,0)}}
+@media(max-width:1080px){.trust-ring{display:none}}
+
+/* ── STEPPER ─────────── */
+.stepper{position:relative;padding-bottom:8px}
+.step-track{position:absolute;top:17px;left:17px;right:17px;height:2px;background:var(--border);z-index:0}
+.step-fill{position:absolute;top:0;left:0;height:100%;width:0%;background:var(--indigo);transition:width .45s var(--ease)}
+.step-row{display:flex;align-items:flex-start;justify-content:space-between;position:relative;z-index:1}
+.step-item{display:flex;flex-direction:column;align-items:center;gap:9px;flex:1}
+.step-circle{position:relative;width:34px;height:34px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.78rem;color:var(--slate-light);transition:all .3s var(--ease);flex-shrink:0}
+.step-circle i{display:none;font-size:.68rem;color:#fff}
+.step-item.done .step-circle{border-color:var(--mint);background:var(--mint)}
+.step-item.done .step-circle .num{display:none}
+.step-item.done .step-circle i{display:block}
+.step-item.active .step-circle{border-color:var(--indigo);background:var(--indigo);color:#fff;box-shadow:0 0 0 5px var(--indigo-light)}
+.step-label{font-size:.78rem;font-weight:600;color:var(--slate-light);transition:color var(--t);text-align:center;max-width:110px}
+.step-item.active .step-label{color:var(--ink);font-weight:700}
+.step-item.done .step-label{color:var(--mint-dark)}
+
+/* ── MAIN CONTENT ─────────── */
+.booking-body{padding:56px 0 100px;background:var(--bg)}
+.booking-body .container{max-width:1200px;margin:0 auto;padding:0 40px}
+.panel{display:none;animation:rise .35s var(--ease) both}
+.panel.visible{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION HEADER ─────────── */
+.sec-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--indigo-dark);margin-bottom:10px}
+.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:var(--ink);letter-spacing:-1px;margin-bottom:8px;line-height:1.15}
+.sec-title em{font-family:'Playfair Display',serif;font-weight:400;font-style:italic;color:var(--indigo)}
+.sec-sub{font-size:.88rem;color:var(--slate);max-width:480px;margin-bottom:36px;line-height:1.75}
+
+/* ── TYPE GRID ─────────── */
+.type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px}
+.type-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:28px 24px 24px;cursor:pointer;transition:all var(--t);position:relative;overflow:hidden;display:flex;flex-direction:column;gap:14px}
+.type-card-bar{position:absolute;top:0;left:0;right:0;height:3px;border-radius:20px 20px 0 0;transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.type-card:hover .type-card-bar,.type-card.sel .type-card-bar{transform:scaleX(1)}
+.type-card:hover{border-color:var(--indigo);transform:translateY(-4px);box-shadow:var(--shadow-card-lg)}
+.type-card.sel{border-color:var(--indigo);transform:translateY(-3px);box-shadow:var(--shadow-card-lg)}
+.type-chk{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:var(--indigo);display:none;align-items:center;justify-content:center}
+.type-chk i{font-size:.55rem;color:#fff}
+.type-card.sel .type-chk{display:flex}
+.type-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.type-card h4{font-size:.95rem;font-weight:700;color:var(--ink);line-height:1.3}
+.type-card p{font-size:.78rem;color:var(--slate);line-height:1.7;flex:1}
+.type-count{font-size:.7rem;font-weight:600;color:var(--slate-light);padding:3px 10px;background:var(--bg);border:1px solid var(--border);border-radius:20px;width:fit-content}
+
+/* type / service icon colour families */
+.ico-indigo{background:var(--indigo-light);color:var(--indigo)}
+.ico-sky{background:#EFF6FF;color:#1D4ED8}
+.ico-teal{background:#F0FDFA;color:#0D9488}
+.ico-magenta{background:#FAF1FE;color:#A21CAF}
+.ico-amber{background:#FFFBEB;color:#B45309}
+.ico-rose{background:#FFF1F2;color:#BE185D}
+.bar-indigo{background:var(--indigo)}
+.bar-sky{background:#2563EB}
+.bar-teal{background:#0D9488}
+.bar-magenta{background:#A21CAF}
+.bar-amber{background:#D97706}
+.bar-rose{background:#E11D48}
+
+/* ── SERVICE GRID ─────────── */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:36px}
+.svc-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all var(--t);display:flex;align-items:flex-start;gap:16px;position:relative}
+.svc-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:16px 0 0 16px;background:var(--indigo);transform:scaleY(0);transform-origin:top;transition:transform .25s var(--ease)}
+.svc-card:hover::before,.svc-card.sel::before{transform:scaleY(1)}
+.svc-card:hover{border-color:var(--indigo);transform:translateY(-2px);box-shadow:var(--shadow-card)}
+.svc-card.sel{border-color:var(--indigo);background:#FAFAFE}
+.svc-radio{position:absolute;top:16px;right:16px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--border);background:#fff;transition:all var(--t)}
+.svc-card.sel .svc-radio{border-color:var(--indigo);background:var(--indigo)}
+.svc-card.sel .svc-radio::after{content:'';display:block;width:6px;height:6px;background:#fff;border-radius:50%;margin:4px auto}
+.svc-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.svc-body{flex:1;padding-right:22px}
+.svc-body h5{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:4px}
+.svc-body p{font-size:.76rem;color:var(--slate);line-height:1.65}
+.svc-dur{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;font-weight:600;color:#1D4ED8;background:#EFF6FF;padding:3px 9px;border-radius:5px;margin-top:10px;font-family:'JetBrains Mono',monospace}
+.svc-dur i{font-size:.65rem}
+
+/* ── BOOKING LAYOUT ─────────── */
+.booking-cols{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start;margin-bottom:36px}
+
+/* ── CARD BLOCK ─────────── */
+.bk-card{background:var(--white);border:1.5px solid var(--border);border-radius:20px;overflow:hidden}
+.bk-card-head{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.bk-card-head i{color:var(--mint);font-size:.9rem}
+.bk-card-head span{font-size:.82rem;font-weight:700;color:var(--ink)}
+.bk-card-body{padding:22px 24px}
+
+/* ── CALENDAR ─────────── */
+.cal-nav-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.cal-month-label{font-size:.88rem;font-weight:700;color:var(--ink)}
+.cal-btn{width:30px;height:30px;border-radius:8px;border:1.5px solid var(--border);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--slate);transition:all var(--t)}
+.cal-btn:hover{border-color:var(--indigo);color:var(--indigo)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-head{text-align:center;font-size:.62rem;font-weight:700;color:var(--slate-light);text-transform:uppercase;letter-spacing:.05em;padding:4px 0}
+.day{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:500;cursor:pointer;color:var(--text);transition:all var(--t);border:1.5px solid transparent;position:relative;font-family:'JetBrains Mono',monospace}
+.day.empty,.day.past{color:var(--border);cursor:not-allowed;pointer-events:none}
+.day.avail:hover{background:var(--bg);border-color:var(--border)}
+.day.today{font-weight:800;color:var(--ink)}
+.day.today::after{content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--mint);border-radius:50%}
+.day.sel{background:var(--indigo);color:#fff;border-color:var(--indigo);box-shadow:0 3px 10px rgba(91,79,232,.32)}
+.day.weekend:not(.sel){color:var(--slate-light)}
+.cal-legend{display:flex;gap:16px;margin-top:14px;font-size:.68rem;color:var(--slate-light);flex-wrap:wrap}
+.lg-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px}
+.lg-today{background:var(--mint)}
+.lg-sel{background:var(--indigo)}
+.lg-busy{background:var(--border)}
+
+/* ── SLOTS ─────────── */
+.slot-lbl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--slate-light);margin:14px 0 7px}
+.slots-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.slot{padding:8px 2px;border-radius:8px;border:1.5px solid var(--border);text-align:center;font-size:.74rem;font-weight:600;cursor:pointer;color:var(--ink);background:#fff;transition:all var(--t);font-family:'JetBrains Mono',monospace}
+.slot:hover{border-color:var(--indigo);background:var(--bg)}
+.slot.busy{background:var(--bg);color:var(--border);cursor:not-allowed;pointer-events:none}
+.slot.sel{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.slots-empty{padding:32px 0;text-align:center;color:var(--slate-light);font-size:.8rem}
+.slots-empty i{display:block;font-size:1.4rem;margin-bottom:8px;color:var(--border)}
+
+/* ── SUMMARY CARD ─────────── */
+.summary-rows{display:flex;flex-direction:column;gap:10px}
+.sum-row{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border-radius:10px;border:1px solid var(--border)}
+.sum-ico{width:34px;height:34px;border-radius:9px;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sum-ico i{font-size:.8rem;color:var(--indigo)}
+.sum-info small{display:block;font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--slate-light);margin-bottom:1px}
+.sum-info strong{font-size:.85rem;font-weight:700;color:var(--ink)}
+
+/* ── FORM ─────────── */
+.form-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.frow{display:flex;flex-direction:column;gap:6px}
+.frow.full{grid-column:1/-1}
+.frow label{font-size:.72rem;font-weight:700;color:var(--ink);letter-spacing:.02em}
+.req{color:var(--red)}
+.field{position:relative}
+.field .field-ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:.8rem;color:var(--slate-light);pointer-events:none;transition:color var(--t)}
+.field input:focus + .field-ic,.field select:focus + .field-ic{color:var(--indigo)}
+.field input,.field select{padding-left:38px}
+.frow input,.frow select,.frow textarea{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:.84rem;font-family:'Inter',sans-serif;color:var(--text);outline:none;width:100%;transition:all var(--t)}
+.frow input:focus,.frow select:focus,.frow textarea:focus{border-color:var(--indigo);background:#fff;box-shadow:0 0 0 4px var(--indigo-light)}
+.frow input.err,.frow select.err{border-color:var(--red);background:var(--red-bg)}
+.err-msg{font-size:.69rem;color:var(--red);font-weight:500;display:none}
+.err-msg.on{display:block}
+.frow select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;-webkit-appearance:none;cursor:pointer}
+.frow textarea{resize:vertical;min-height:80px;line-height:1.65}
+
+/* ── UPLOAD ─────────── */
+.upload-zone{border:1.5px dashed var(--border);border-radius:14px;padding:28px 20px;cursor:pointer;transition:all var(--t);background:var(--bg);text-align:center;position:relative}
+.upload-zone:hover,.upload-zone.over{border-color:var(--indigo);background:var(--indigo-light)}
+.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-zone-icon{width:44px;height:44px;border-radius:12px;background:#fff;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.upload-zone-icon i{font-size:1.1rem;color:var(--indigo)}
+.upload-zone strong{display:block;font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:4px}
+.upload-zone span{font-size:.72rem;color:var(--slate-light)}
+.upload-preview{display:none;align-items:center;gap:12px;padding:12px 16px;background:#fff;border:1.5px solid var(--border);border-radius:12px;margin-top:10px}
+.upload-preview.on{display:flex}
+.file-thumb{width:38px;height:38px;border-radius:9px;background:var(--mint-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.file-thumb i{font-size:.9rem;color:var(--mint-dark)}
+.file-thumb img{width:100%;height:100%;object-fit:cover}
+.file-meta{flex:1;min-width:0}
+.file-name{font-size:.76rem;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.file-size{font-size:.67rem;color:var(--slate-light)}
+.file-del{width:26px;height:26px;border-radius:50%;border:none;background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--t)}
+.file-del:hover{background:var(--red-bg)}
+.file-del i{font-size:.65rem;color:var(--slate);transition:color var(--t)}
+.file-del:hover i{color:var(--red)}
+
+/* ── CONFIRM CARD ─────────── */
+.confirm-wrap{max-width:620px}
+.confirm-head{background:linear-gradient(135deg,var(--indigo),var(--indigo-dark));border-radius:20px 20px 0 0;padding:36px 32px;display:flex;align-items:center;gap:20px}
+.confirm-head-badge{width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.confirm-head-badge i{font-size:1.4rem;color:#fff}
+.confirm-head-text h2{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:4px}
+.confirm-head-text p{font-size:.78rem;color:rgba(255,255,255,.62)}
+.confirm-body{background:#fff;border:1.5px solid var(--border);border-top:none;border-radius:0 0 20px 20px;padding:24px}
+.conf-rows{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.conf-row{display:flex;align-items:center;gap:14px;padding:12px 14px;background:var(--bg);border-radius:10px;border:1px solid var(--border)}
+.conf-icon{width:36px;height:36px;border-radius:9px;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.conf-icon i{font-size:.8rem;color:var(--indigo)}
+.conf-info small{display:block;font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--slate-light);margin-bottom:2px}
+.conf-info strong{font-size:.88rem;font-weight:700;color:var(--ink)}
+.conf-actions{display:flex;gap:10px}
+
+/* ── SUCCESS ─────────── */
+.success-wrap{max-width:500px;padding:24px 0 48px;text-align:center;position:relative}
+.success-ring-wrap{position:relative;width:160px;height:160px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center}
+.success-ring-svg{position:absolute;inset:0;width:100%;height:100%;animation:ringspin 26s linear infinite}
+.success-ring-text{font-family:'Inter',sans-serif;font-weight:700;font-size:9px;letter-spacing:2.2px;fill:var(--mint-dark);text-transform:uppercase}
+.success-ring{width:80px;height:80px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,184,148,.28);animation:pop .55s cubic-bezier(.175,.885,.32,1.275) both;position:relative;z-index:1}
+@keyframes pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+.success-ring i{font-size:1.8rem;color:#fff}
+.success-wrap h2{font-size:2.2rem;font-weight:800;color:var(--ink);letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+.success-wrap h2 em{font-family:'Playfair Display',serif;font-weight:400;font-style:italic;color:var(--mint-dark)}
+.success-wrap p{color:var(--slate);line-height:1.8;margin-bottom:24px;font-size:.9rem}
+.ref-pill{display:inline-flex;align-items:center;gap:8px;background:var(--mint-light);color:var(--mint-dark);font-size:.8rem;font-weight:700;padding:10px 14px 10px 22px;border-radius:50px;margin-bottom:36px;border:1px solid rgba(0,184,148,.2);letter-spacing:.05em}
+.ref-pill #refCode{font-weight:700}
+.ref-copy{background:none;border:none;color:var(--mint-dark);cursor:pointer;font-size:.78rem;padding:5px 7px;border-radius:7px;transition:background var(--t);display:flex;align-items:center}
+.ref-copy:hover{background:rgba(0,184,148,.16)}
+.success-btns{display:flex;flex-direction:column;align-items:center;gap:10px}
+
+/* ── TOASTS ─────────── */
+.toast-wrap{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:10px;z-index:500;max-width:340px}
+.toast{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow-card-lg);font-size:.8rem;color:var(--ink);animation:toastIn .3s var(--ease) both}
+.toast.out{animation:toastOut .25s var(--ease) both}
+.toast .t-ic{margin-top:1px;font-size:.85rem;flex-shrink:0}
+.toast.error .t-ic{color:var(--red)}
+.toast.success .t-ic{color:var(--mint)}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes toastOut{to{opacity:0;transform:translateY(6px) scale(.96)}}
+
+/* ── BUTTONS ─────────── */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'Inter',sans-serif;font-weight:600;font-size:.84rem;padding:12px 26px;border-radius:50px;cursor:pointer;transition:all var(--t);border:none;text-decoration:none;white-space:nowrap;letter-spacing:.01em}
+.btn i{font-size:.78rem}
+.btn-primary{background:var(--indigo);color:#fff;box-shadow:var(--shadow-brand)}
+.btn-primary:hover:not(:disabled){background:var(--indigo-dark);transform:translateY(-1px);box-shadow:0 14px 32px rgba(91,79,232,.34)}
+.btn-primary:disabled{background:var(--border);color:var(--slate-light);cursor:not-allowed;box-shadow:none;transform:none}
+.btn-ghost{background:transparent;color:var(--slate);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--indigo);color:var(--indigo);background:var(--indigo-light)}
+.btn-success{background:var(--mint);color:#fff;box-shadow:0 4px 14px rgba(0,184,148,.28)}
+.btn-success:hover{background:var(--mint-dark);transform:translateY(-1px);box-shadow:0 8px 22px rgba(0,184,148,.38)}
+.btn-lg{padding:14px 34px;font-size:.9rem}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:24px;border-top:1px solid var(--border)}
+.nav-row.right{justify-content:flex-end}
+
+/* ── BREADCRUMB ─────────── */
+.bcrumb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:28px;font-size:.75rem;color:var(--slate-light)}
+.bcrumb strong{color:var(--ink);font-weight:600}
+.bcrumb-sep{color:var(--border)}
+
+/* ── RESPONSIVE ─────────── */
+@media(max-width:960px){
+  .type-grid{grid-template-columns:repeat(2,1fr)}
+  .booking-cols{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .booking-hero .container,.booking-body .container{padding:0 20px}
+  .navbar-main .container{padding:0 20px}
+  .type-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .form-cols{grid-template-columns:1fr}
+  .frow.full{grid-column:1}
+  .stepper{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .step-label{display:none}
+  .step-track,.step-fill{top:17px}
+  .hero-title{font-size:2.4rem}
+  .slots-grid{grid-template-columns:repeat(3,1fr)}
+  .trust-strip{flex-wrap:wrap}
+  .toast-wrap{left:16px;right:16px;bottom:16px;max-width:none}
+}
+
+
+
+/* ── REDUCED MOTION ─────────── */
+@media(prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ffffff;
+    --ink-mid: #ffffff;
+    --indigo: #8b7cff;
+    --indigo-dark: #a89cff;
+    --indigo-light: #1e1b4b;
+    --mint: #34d399;
+    --mint-dark: #34d399;
+    --mint-light: #0f2a27;
+    --coral: #ff7ab6;
+    --coral-light: #3a1b26;
+    --slate: #ffffff;
+    --slate-light: #ffffff;
+    --border: #243244;
+    --bg: #0b1020;
+    --white: #111827;
+    --red: #ff6b6b;
+    --red-bg: #33151a;
+    --text: #ffffff;
+    --ease: cubic-bezier(0.4,0,0.2,1);
+    --t: .22s var(--ease);
+    --shadow-card: 0 16px 48px rgba(0,0,0,.35);
+    --shadow-card-lg: 0 20px 56px rgba(0,0,0,.45);
+    --shadow-brand: 0 10px 26px rgba(91,79,232,.35);
+  }
+
+  html { color-scheme: dark; }
+
+  body {
+    background: #0b1020 !important;
+    color: #ffffff !important;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  p, span, li, a, label,
+  .hero-title, .hero-sub, .sec-title, .sec-sub,
+  .step-label, .type-card h4, .type-card p,
+  .svc-body h5, .svc-body p,
+  .sum-info small, .sum-info strong,
+  .conf-info small, .conf-info strong,
+  .trust-text, .slots-empty, .cal-head,
+  .day, .slot,
+  .confirm-head-text h2, .confirm-head-text p,
+  .success-wrap h2, .success-wrap p,
+  .back-home-btn {
+    color: #ffffff !important;
+  }
+
+  .navbar-main.scrolled,
+  .bk-card,
+  .type-card,
+  .svc-card,
+  .sum-row,
+  .conf-row,
+  .upload-preview,
+  .toast,
+  .panel,
+  .confirm-body,
+  .nav-links {
+    background: #111827 !important;
+    border-color: #243244 !important;
+  }
+
+  .booking-hero,
+  .booking-body {
+    background: #0b1020 !important;
+  }
+
+  .navbar-brand,
+  .hero-title,
+  .sec-title,
+  .step-body h5,
+  .type-card h4,
+  .svc-body h5,
+  .sum-info strong,
+  .conf-info strong,
+  .confirm-head-text h2,
+  .success-wrap h2 {
+    color: #ffffff !important;
+  }
+
+  .hero-sub,
+  .sec-sub,
+  .step-body p,
+  .type-card p,
+  .svc-body p,
+  .sum-info small,
+  .conf-info small,
+  .trust-text,
+  .slots-empty,
+  .cal-head,
+  .day.weekend:not(.sel),
+  .day.empty,
+  .day.past {
+    color: rgba(255,255,255,.82) !important;
+  }
+
+  .frow input,
+  .frow select,
+  .frow textarea {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border-color: #243244 !important;
+  }
+
+  .frow input::placeholder,
+  .frow textarea::placeholder {
+    color: rgba(255,255,255,.65) !important;
+  }
+
+  .upload-zone {
+    background: #0f172a !important;
+    border-color: #243244 !important;
+  }
+
+  .upload-zone:hover,
+  .upload-zone.over {
+    background: #1e1b4b !important;
+  }
+
+  .slot,
+  .day.avail {
+    background: #111827 !important;
+    color: #ffffff !important;
+  }
+
+  .slot:hover,
+  .day.avail:hover {
+    background: #1e1b4b !important;
+    color: #ffffff !important;
+    border-color: #8b7cff !important;
+  }
+
+  .day.sel,
+  .slot.sel {
+    background: #8b7cff !important;
+    color: #ffffff !important;
+    border-color: #8b7cff !important;
+  }
+
+  .day.today::after {
+    background: #ffffff !important;
+  }
+
+  .day.today {
+    color: #ffffff !important;
+  }
+
+  .inline-circle-arrow {
+    background: #ffffff !important;
+    color: #0b1020 !important;
+  }
+
+  .inline-circle-arrow svg,
+  .inline-circle-arrow svg path {
+    stroke: #0b1020 !important;
+  }
+
+  .btn-primary,
+  .btn-success,
+  .btn-primary-custom,
+  .btn-medico-primary,
+  .btn-login-submit,
+  .nav-signup {
+    color: #ffffff !important;
+  }
+
+  .btn-ghost,
+  .btn-white,
+  .btn-ghost-white,
+  .btn-outline-custom,
+  .back-home-btn {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border-color: #243244 !important;
+  }
+
+  .btn-ghost:hover,
+  .btn-white:hover,
+  .btn-ghost-white:hover,
+  .btn-outline-custom:hover,
+  .back-home-btn:hover {
+    background: rgba(139, 124, 255, 0.16) !important;
+    color: #ffffff !important;
+  }
+
+  .type-card:hover,
+  .svc-card:hover,
+  .feature-item:hover,
+  .service-card:hover {
+    transform: translateY(-4px) !important;
+    background: #1e1b4b !important;
+    color: #ffffff !important;
+  }
+
+  .type-card.sel,
+  .svc-card.sel {
+    background: #1f2937 !important;
+    color: #ffffff !important;
+    border-color: #8b7cff !important;
+  }
+
+  .navbar-main.scrolled,
+  .nav-links,
+  .bk-card,
+  .panel,
+  .confirm-body,
+  .toast {
+    backdrop-filter: blur(12px);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar-main scrolled" id="navbar">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">MediCo<span class="brand-reg">®</span></a>
+    <a href="index.html" class="back-home-btn">
+      <i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar ao início
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="booking-hero">
+  <div class="container">
+
+    <!-- decorative rotating trust ring, inspired by the MediCo brand mark -->
+    <div class="trust-ring" aria-hidden="true">
+      <svg viewBox="0 0 160 160" class="ring-svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path id="heroRingPath" d="M80,80 m-65,0 a65,65 0 1,0 130,0 a65,65 0 1,0 -130,0" fill="none"/>
+        <text class="ring-text"><textPath href="#heroRingPath" xlink:href="#heroRingPath" startOffset="0%">MARCAÇÃO SEGURA &#8226; DADOS PROTEGIDOS &#8226; </textPath></text>
+      </svg>
+      <div class="ring-center"><span><i class="fas fa-shield-heart"></i></span></div>
+    </div>
+
+    <div class="hero-eyebrow">
+      <span class="hero-dot"></span>
+      Marcação online
+    </div>
+    <h1 class="hero-title">
+      A sua saúde,<br>
+      <span class="serif">ao seu ritmo</span>
+    </h1>
+    <p class="hero-sub">Em poucos passos, escolha o tipo de cuidado, o serviço e o horário que se adequa à sua vida.</p>
+
+    <div class="trust-strip">
+      <div class="trust-avatars" aria-hidden="true">
+        <span class="t-avt c1"><i class="fas fa-user-md"></i></span>
+        <span class="t-avt c2"><i class="fas fa-user-nurse"></i></span>
+        <span class="t-avt c3"><i class="fas fa-user"></i></span>
+      </div>
+      <span class="trust-text"><strong>+500 pacientes</strong> marcaram consulta esta semana</span>
+    </div>
+
+    <!-- Stepper -->
+    <div class="stepper" id="stepper" role="list" aria-label="Etapas da marcação">
+      <div class="step-track"><div class="step-fill" id="stepFill"></div></div>
+      <div class="step-row">
+        <div class="step-item" id="step1" role="listitem">
+          <div class="step-circle"><span class="num">1</span><i class="fas fa-check" aria-hidden="true"></i></div>
+          <span class="step-label">Tipo de cuidado</span>
+        </div>
+        <div class="step-item" id="step2" role="listitem">
+          <div class="step-circle"><span class="num">2</span><i class="fas fa-check" aria-hidden="true"></i></div>
+          <span class="step-label">Serviço</span>
+        </div>
+        <div class="step-item" id="step3" role="listitem">
+          <div class="step-circle"><span class="num">3</span><i class="fas fa-check" aria-hidden="true"></i></div>
+          <span class="step-label">Data & hora</span>
+        </div>
+        <div class="step-item" id="step4" role="listitem">
+          <div class="step-circle"><span class="num">4</span><i class="fas fa-check" aria-hidden="true"></i></div>
+          <span class="step-label">Dados pessoais</span>
+        </div>
+        <div class="step-item" id="step5" role="listitem">
+          <div class="step-circle"><span class="num">5</span><i class="fas fa-check" aria-hidden="true"></i></div>
+          <span class="step-label">Confirmação</span>
+        </div>
+      </div>
+    </div>
+    <div class="sr-only" id="stepAnnounce" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- BODY -->
+<div class="booking-body">
+  <div class="container">
+
+    <!-- STEP 1 — Tipo -->
+    <div class="panel visible" id="p1">
+      <div class="sec-label">Passo 1 de 5</div>
+      <h2 class="sec-title">Que <em>cuidado</em> precisa?</h2>
+      <p class="sec-sub">Seleccione uma categoria para ver os serviços disponíveis.</p>
+      <div class="type-grid">
+
+        <div class="type-card" tabindex="0" role="button" aria-pressed="false" onclick="selectType(this,'consulta','Consulta Médica')">
+          <div class="type-card-bar bar-indigo"></div>
+          <div class="type-chk"><i class="fas fa-check" aria-hidden="true"></i></div>
+          <div class="type-icon ico-indigo"><i class="fas fa-user-md" aria-hidden="true"></i></div>
+          <h4>Consulta Médica</h4>
+          <p>Avaliação clínica com médico especialista ou de clínica geral.</p>
+          <div class="type-count">8 especialidades</div>
+        </div>
+
+        <div class="type-card" tabindex="0" role="button" aria-pressed="false" onclick="selectType(this,'exame','Exame de Imagem')">
+          <div class="type-card-bar bar-sky"></div>
+          <div class="type-chk"><i class="fas fa-check" aria-hidden="true"></i></div>
+          <div class="type-icon ico-sky"><i class="fas fa-x-ray" aria-hidden="true"></i></div>
+          <h4>Exame de Imagem</h4>
+          <p>Raio-X, ecografia, TAC e outros exames imagiológicos.</p>
+          <div class="type-count">6 exames</div>
+        </div>
+
+        <div class="type-card" tabindex="0" role="button" aria-pressed="false" onclick="selectType(this,'analise','Análises Clínicas')">
+          <div class="type-card-bar bar-teal"></div>
+          <div class="type-chk"><i class="fas fa-check" aria-hidden="true"></i></div>
+          <div class="type-icon ico-teal"><i class="fas fa-flask" aria-hidden="true"></i></div>
+          <h4>Análises Clínicas</h4>
+          <p>Hemogramas, bioquímica, serologia e perfis laboratoriais.</p>
+          <div class="type-count">8 painéis</div>
+        </div>
+
+        <div class="type-card" tabindex="0" role="button" aria-pressed="false" onclick="selectType(this,'telemedicina','Telemedicina')">
+          <div class="type-card-bar bar-magenta"></div>
+          <div class="type-chk"><i class="fas fa-check" aria-hidden="true"></i></div>
+          <div class="type-icon ico-magenta"><i class="fas fa-laptop-medical" aria-hidden="true"></i></div>
+          <h4>Telemedicina</h4>
+          <p>Consulta por videochamada com a mesma qualidade clínica, em casa.</p>
+          <div class="type-count">5 modalidades</div>
+        </div>
+
+        <div class="type-card" tabindex="0" role="button" aria-pressed="false" onclick="selectType(this,'vacina','Vacinação')">
+          <div class="type-card-bar bar-amber"></div>
+          <div class="type-chk"><i class="fas fa-check" aria-hidden="true"></i></div>
+          <div class="type-icon ico-amber"><i class="fas fa-syringe" aria-hidden="true"></i></div>
+          <h4>Vacinação</h4>
+          <p>Vacinas do calendário e de viagem com aconselhamento médico.</p>
+          <div class="type-count">6 vacinas</div>
+        </div>
+
+        <div class="type-card" tabindex="0" role="button" aria-pressed="false" onclick="selectType(this,'urgencia','Urgência / Triagem')">
+          <div class="type-card-bar bar-rose"></div>
+          <div class="type-chk"><i class="fas fa-check" aria-hidden="true"></i></div>
+          <div class="type-icon ico-rose"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+          <h4>Urgência / Triagem</h4>
+          <p>Atendimento prioritário para situações que não podem esperar.</p>
+          <div class="type-count">Atendimento imediato</div>
+        </div>
+
+      </div>
+      <div class="nav-row right">
+        <button class="btn btn-primary btn-lg" id="btn1" disabled onclick="goStep(2)">
+          Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2 — Serviço -->
+    <div class="panel" id="p2">
+      <div class="bcrumb" id="bc2"></div>
+      <div class="sec-label">Passo 2 de 5</div>
+      <h2 class="sec-title" id="p2title">Escolha o <em>serviço</em></h2>
+      <p class="sec-sub">Seleccione o procedimento ou especialidade pretendida.</p>
+      <div class="svc-grid" id="svcGrid"></div>
+      <div class="nav-row">
+        <button class="btn btn-ghost" onclick="goStep(1)"><i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar</button>
+        <button class="btn btn-primary btn-lg" id="btn2" disabled onclick="goStep(3)">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+
+    <!-- STEP 3 — Data & Hora -->
+    <div class="panel" id="p3">
+      <div class="bcrumb" id="bc3"></div>
+      <div class="sec-label">Passo 3 de 5</div>
+      <h2 class="sec-title">Escolha <em>data & hora</em></h2>
+      <p class="sec-sub">Seleccione o dia e o período que melhor se adapta à sua agenda.</p>
+      <div class="booking-cols">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div class="bk-card">
+            <div class="bk-card-head">
+              <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+              <span>Seleccionar data</span>
+            </div>
+            <div class="bk-card-body">
+              <div class="cal-nav-row">
+                <button class="cal-btn" onclick="calNav(-1)" aria-label="Mês anterior"><i class="fas fa-chevron-left" style="font-size:.65rem" aria-hidden="true"></i></button>
+                <div class="cal-month-label" id="calMonth"></div>
+                <button class="cal-btn" onclick="calNav(1)" aria-label="Mês seguinte"><i class="fas fa-chevron-right" style="font-size:.65rem" aria-hidden="true"></i></button>
+              </div>
+              <div class="cal-grid" id="calGrid"></div>
+              <div class="cal-legend">
+                <span><i class="lg-dot lg-today"></i>Hoje</span>
+                <span><i class="lg-dot lg-sel"></i>Seleccionado</span>
+                <span><i class="lg-dot lg-busy"></i>Indisponível</span>
+              </div>
+            </div>
+          </div>
+          <div class="bk-card">
+            <div class="bk-card-head">
+              <i class="fas fa-clock" aria-hidden="true"></i>
+              <span>Seleccionar horário</span>
+            </div>
+            <div class="bk-card-body">
+              <div id="slotsEmpty" class="slots-empty">
+                <i class="fas fa-calendar-day" aria-hidden="true"></i>
+                Seleccione uma data primeiro
+              </div>
+              <div id="slotsContent" style="display:none">
+                <div class="slot-lbl">Manhã</div>
+                <div class="slots-grid" id="slotsAM"></div>
+                <div class="slot-lbl">Tarde</div>
+                <div class="slots-grid" id="slotsPM"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bk-card" style="position:sticky;top:90px">
+          <div class="bk-card-head">
+            <i class="fas fa-clipboard-list" aria-hidden="true"></i>
+            <span>Resumo</span>
+          </div>
+          <div class="bk-card-body">
+            <div class="summary-rows">
+              <div class="sum-row">
+                <div class="sum-ico"><i class="fas fa-plus-circle" aria-hidden="true"></i></div>
+                <div class="sum-info"><small>Tipo</small><strong id="sum-type">—</strong></div>
+              </div>
+              <div class="sum-row">
+                <div class="sum-ico"><i class="fas fa-stethoscope" aria-hidden="true"></i></div>
+                <div class="sum-info"><small>Serviço</small><strong id="sum-svc">—</strong></div>
+              </div>
+              <div class="sum-row">
+                <div class="sum-ico"><i class="fas fa-calendar" aria-hidden="true"></i></div>
+                <div class="sum-info"><small>Data</small><strong id="sum-date">Não seleccionada</strong></div>
+              </div>
+              <div class="sum-row">
+                <div class="sum-ico"><i class="fas fa-clock" aria-hidden="true"></i></div>
+                <div class="sum-info"><small>Horário</small><strong id="sum-time">Não seleccionado</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn btn-ghost" onclick="goStep(2)"><i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar</button>
+        <button class="btn btn-primary btn-lg" id="btn3" disabled onclick="goStep(4)">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+
+    <!-- STEP 4 — Dados -->
+    <div class="panel" id="p4">
+      <div class="bcrumb" id="bc4"></div>
+      <div class="sec-label">Passo 4 de 5</div>
+      <h2 class="sec-title">Dados do <em>paciente</em></h2>
+      <p class="sec-sub">Preencha os dados de identificação. Os campos com <span class="req">*</span> são obrigatórios.</p>
+      <div class="form-cols">
+
+        <div class="frow">
+          <label for="fName">Nome completo <span class="req">*</span></label>
+          <div class="field">
+            <input type="text" id="fName" placeholder="Ex: Maria da Silva" oninput="vName(this)" autocomplete="name">
+            <i class="fas fa-user field-ic" aria-hidden="true"></i>
+          </div>
+          <span class="err-msg" id="er-name">Insira o nome completo (mínimo 3 caracteres)</span>
+        </div>
+
+        <div class="frow">
+          <label for="fDOB">Data de nascimento <span class="req">*</span></label>
+          <div class="field">
+            <input type="date" id="fDOB" oninput="vDOB(this)" autocomplete="bday">
+            <i class="fas fa-calendar-day field-ic" aria-hidden="true"></i>
+          </div>
+          <span class="err-msg" id="er-dob">A data não pode ser hoje ou no futuro</span>
+        </div>
+
+        <div class="frow">
+          <label for="fPhone">Telemóvel <span class="req">*</span></label>
+          <div class="field">
+            <input type="tel" id="fPhone" placeholder="82 345 6789" oninput="vPhone(this)" autocomplete="tel">
+            <i class="fas fa-phone field-ic" aria-hidden="true"></i>
+          </div>
+          <span class="err-msg" id="er-phone">Introduza um número moçambicano válido (ex: 82 345 6789)</span>
+        </div>
+
+        <div class="frow">
+          <label for="fEmail">Email</label>
+          <div class="field">
+            <input type="email" id="fEmail" placeholder="email@exemplo.com" oninput="vEmail(this)" autocomplete="email">
+            <i class="fas fa-envelope field-ic" aria-hidden="true"></i>
+          </div>
+          <span class="err-msg" id="er-email">Endereço de email inválido</span>
+        </div>
+
+        <div class="frow">
+          <label for="fGender">Género</label>
+          <div class="field">
+            <select id="fGender">
+              <option value="">Seleccionar...</option>
+              <option>Masculino</option>
+              <option>Feminino</option>
+              <option>Prefiro não indicar</option>
+            </select>
+            <i class="fas fa-venus-mars field-ic" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="frow">
+          <label>Documento de identificação</label>
+          <div class="upload-zone" id="uploadZone" ondragover="onDragOver(event)" ondragleave="onDragLeave()" ondrop="onDrop(event)">
+            <input type="file" id="fDoc" accept="image/*,.pdf" onchange="onFileSelect(this)" aria-label="Carregar documento de identificação">
+            <div class="upload-zone-icon"><i class="fas fa-cloud-upload-alt" aria-hidden="true"></i></div>
+            <strong>Clique ou arraste o documento</strong>
+            <span>BI, Passaporte ou Título de Residência · JPG, PNG, PDF · máx. 5 MB</span>
+          </div>
+          <div class="upload-preview" id="uploadPreview">
+            <div class="file-thumb" id="fileThumb"><i class="fas fa-file-alt" aria-hidden="true"></i></div>
+            <div class="file-meta">
+              <div class="file-name" id="fDocName">—</div>
+              <div class="file-size" id="fDocSize">—</div>
+            </div>
+            <button class="file-del" onclick="removeFile()" type="button" aria-label="Remover ficheiro"><i class="fas fa-times" aria-hidden="true"></i></button>
+          </div>
+        </div>
+
+        <div class="frow full">
+          <label for="fNotes">Motivo da consulta / Sintomas</label>
+          <textarea id="fNotes" placeholder="Descreva brevemente o motivo da consulta ou sintomas que apresenta..."></textarea>
+        </div>
+
+      </div>
+      <div class="nav-row">
+        <button class="btn btn-ghost" onclick="goStep(3)"><i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar</button>
+        <button class="btn btn-primary btn-lg" id="btn4" disabled onclick="goStep(5)">Rever marcação <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+
+    <!-- STEP 5 — Confirmar -->
+    <div class="panel" id="p5">
+      <div class="sec-label">Passo 5 de 5</div>
+      <h2 class="sec-title">Confirme a <em>marcação</em></h2>
+      <p class="sec-sub">Verifique todos os dados antes de finalizar. Após confirmar receberá um SMS de confirmação.</p>
+      <div class="confirm-wrap">
+        <div class="confirm-head">
+          <div class="confirm-head-badge"><i class="fas fa-clipboard-check" aria-hidden="true"></i></div>
+          <div class="confirm-head-text">
+            <h2>Resumo da marcação</h2>
+            <p>Reveja os detalhes com atenção</p>
+          </div>
+        </div>
+        <div class="confirm-body">
+          <div class="conf-rows">
+            <div class="conf-row">
+              <div class="conf-icon"><i class="fas fa-tag" aria-hidden="true"></i></div>
+              <div class="conf-info"><small>Tipo de cuidado</small><strong id="cf-type">—</strong></div>
+            </div>
+            <div class="conf-row">
+              <div class="conf-icon"><i class="fas fa-stethoscope" aria-hidden="true"></i></div>
+              <div class="conf-info"><small>Serviço</small><strong id="cf-svc">—</strong></div>
+            </div>
+            <div class="conf-row">
+              <div class="conf-icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></div>
+              <div class="conf-info"><small>Data</small><strong id="cf-date">—</strong></div>
+            </div>
+            <div class="conf-row">
+              <div class="conf-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
+              <div class="conf-info"><small>Horário</small><strong id="cf-time">—</strong></div>
+            </div>
+            <div class="conf-row">
+              <div class="conf-icon"><i class="fas fa-user" aria-hidden="true"></i></div>
+              <div class="conf-info"><small>Paciente</small><strong id="cf-name">—</strong></div>
+            </div>
+            <div class="conf-row">
+              <div class="conf-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
+              <div class="conf-info"><small>Telemóvel</small><strong id="cf-phone">—</strong></div>
+            </div>
+            <div class="conf-row" id="cf-doc-row" style="display:none">
+              <div class="conf-icon"><i class="fas fa-id-card" aria-hidden="true"></i></div>
+              <div class="conf-info"><small>Documento</small><strong id="cf-doc">—</strong></div>
+            </div>
+          </div>
+          <div class="conf-actions">
+            <button class="btn btn-ghost" onclick="goStep(4)" style="flex:1;justify-content:center">
+              <i class="fas fa-edit" aria-hidden="true"></i> Editar
+            </button>
+            <button class="btn btn-success btn-lg" onclick="submitBooking()" style="flex:2;justify-content:center">
+              <i class="fas fa-check" aria-hidden="true"></i> Confirmar Marcação
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="panel" id="pSuccess">
+      <div class="success-wrap">
+        <div class="success-ring-wrap">
+          <svg viewBox="0 0 160 160" class="success-ring-svg" aria-hidden="true" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path id="successRingPath" d="M80,80 m-72,0 a72,72 0 1,0 144,0 a72,72 0 1,0 -144,0" fill="none"/>
+            <text class="success-ring-text"><textPath href="#successRingPath" xlink:href="#successRingPath" startOffset="0%">MARCAÇÃO CONFIRMADA &#8226; ATÉ BREVE &#8226; </textPath></text>
+          </svg>
+          <div class="success-ring"><i class="fas fa-check" aria-hidden="true"></i></div>
+        </div>
+        <h2>Marcação<br><em>confirmada!</em></h2>
+        <p>A sua marcação foi registada com sucesso. Receberá brevemente uma confirmação por SMS. Por favor apresente-se 10 minutos antes do horário marcado.</p>
+        <div class="ref-pill">
+          <i class="fas fa-hashtag" aria-hidden="true"></i> Referência: <span id="refCode" class="mono">—</span>
+          <button class="ref-copy" onclick="copyRef()" type="button" aria-label="Copiar referência"><i class="fas fa-copy" aria-hidden="true"></i></button>
+        </div>
+        <div class="success-btns">
+          <button class="btn btn-primary btn-lg" onclick="downloadIcs()" style="justify-content:center" type="button">
+            <i class="fas fa-calendar-plus" aria-hidden="true"></i> Adicionar ao calendário
+          </button>
+          <div style="display:flex;gap:10px;width:100%">
+            <a href="index.html" class="btn btn-ghost" style="flex:1;justify-content:center">
+              <i class="fas fa-home" aria-hidden="true"></i> Início
+            </a>
+            <button class="btn btn-ghost" onclick="resetAll()" style="flex:1;justify-content:center" type="button">
+              <i class="fas fa-redo" aria-hidden="true"></i> Nova marcação
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap" aria-live="assertive" aria-atomic="true"></div>
+
+<script>
+const SVCS={
+  consulta:[
+    {n:'Clínica Geral',d:'Avaliação geral de saúde, check-ups e seguimento de doenças crónicas.',i:'ico-indigo',ic:'fa-user-md',dur:'30 min'},
+    {n:'Cardiologia',d:'Diagnóstico e tratamento de doenças cardiovasculares.',i:'ico-rose',ic:'fa-heart',dur:'45 min'},
+    {n:'Pediatria',d:'Cuidados especializados para crianças, num ambiente acolhedor.',i:'ico-sky',ic:'fa-baby',dur:'40 min'},
+    {n:'Ginecologia',d:'Saúde feminina, rastreios e acompanhamento pré-natal.',i:'ico-magenta',ic:'fa-venus',dur:'45 min'},
+    {n:'Neurologia',d:'Avaliação de cefaleias, epilepsia, vertigens e outras queixas neurológicas.',i:'ico-indigo',ic:'fa-brain',dur:'50 min'},
+    {n:'Ortopedia',d:'Lesões musculoesqueléticas, artroses e planeamento cirúrgico.',i:'ico-amber',ic:'fa-bone',dur:'45 min'},
+    {n:'Dermatologia',d:'Diagnóstico de doenças de pele, alergias e lesões dermatológicas.',i:'ico-teal',ic:'fa-allergies',dur:'30 min'},
+    {n:'Endocrinologia',d:'Diabetes, tiróide, obesidade e desequilíbrios hormonais.',i:'ico-sky',ic:'fa-dna',dur:'45 min'},
+  ],
+  exame:[
+    {n:'Raio-X',d:'Imagens diagnósticas de tórax, membros e coluna vertebral.',i:'ico-sky',ic:'fa-x-ray',dur:'15 min'},
+    {n:'Ecografia Abdominal',d:'Avaliação do fígado, rins, vesícula e órgãos abdominais.',i:'ico-teal',ic:'fa-wave-square',dur:'20 min'},
+    {n:'Ecocardiograma',d:'Avaliação estrutural e funcional do coração por ecografia.',i:'ico-rose',ic:'fa-heart',dur:'30 min'},
+    {n:'Ecografia Obstétrica',d:'Acompanhamento do desenvolvimento fetal durante a gravidez.',i:'ico-magenta',ic:'fa-baby',dur:'20 min'},
+    {n:'Mamografia',d:'Rastreio e diagnóstico de patologias mamárias.',i:'ico-amber',ic:'fa-search-plus',dur:'20 min'},
+    {n:'Densitometria Óssea',d:'Avaliação da densidade mineral óssea para osteoporose.',i:'ico-indigo',ic:'fa-bone',dur:'20 min'},
+  ],
+  analise:[
+    {n:'Hemograma Completo',d:'Avaliação das células sanguíneas: glóbulos, plaquetas e fórmula leucocitária.',i:'ico-rose',ic:'fa-tint',dur:'10 min'},
+    {n:'Perfil Lipídico',d:'Colesterol total, HDL, LDL e triglicéridos.',i:'ico-amber',ic:'fa-chart-bar',dur:'10 min'},
+    {n:'Glicemia & HbA1c',d:'Controlo glicémico e rastreio de diabetes mellitus.',i:'ico-sky',ic:'fa-candy-cane',dur:'10 min'},
+    {n:'Função Renal',d:'Creatinina, ureia e taxa de filtração glomerular.',i:'ico-teal',ic:'fa-filter',dur:'10 min'},
+    {n:'Função Hepática',d:'Transaminases, bilirrubina e avaliação hepática.',i:'ico-indigo',ic:'fa-flask',dur:'10 min'},
+    {n:'Painel HIV / IST',d:'Rastreio confidencial de infecções sexualmente transmissíveis.',i:'ico-magenta',ic:'fa-shield-alt',dur:'15 min'},
+    {n:'Hormónios Tiroideus',d:'TSH, T3 e T4 livre para avaliação da tiróide.',i:'ico-amber',ic:'fa-vial',dur:'10 min'},
+    {n:'Check-up Completo',d:'Hemograma + bioquímica + urina. Rastreio laboratorial anual completo.',i:'ico-teal',ic:'fa-clipboard-check',dur:'15 min'},
+  ],
+  telemedicina:[
+    {n:'Consulta Geral Online',d:'Avaliação médica por videochamada com médico de clínica geral.',i:'ico-indigo',ic:'fa-video',dur:'25 min'},
+    {n:'Seguimento Crónico',d:'Acompanhamento de diabetes, hipertensão e outras doenças crónicas.',i:'ico-rose',ic:'fa-chart-line',dur:'30 min'},
+    {n:'Pediatria Online',d:'Avaliação pediátrica por vídeo, confortável para a criança.',i:'ico-sky',ic:'fa-baby',dur:'25 min'},
+    {n:'Segunda Opinião',d:'Consulte um especialista para rever diagnósticos ou tratamentos.',i:'ico-teal',ic:'fa-comments',dur:'40 min'},
+    {n:'Saúde Mental',d:'Acompanhamento psicológico e psiquiátrico por videochamada.',i:'ico-magenta',ic:'fa-brain',dur:'50 min'},
+  ],
+  vacina:[
+    {n:'Vacina da Gripe',d:'Protecção sazonal contra os vírus da influenza.',i:'ico-sky',ic:'fa-syringe',dur:'10 min'},
+    {n:'Hepatite A & B',d:'Imunização contra hepatite viral A e B.',i:'ico-amber',ic:'fa-shield-virus',dur:'10 min'},
+    {n:'Febre Amarela',d:'Obrigatória para viajantes para zonas endémicas.',i:'ico-teal',ic:'fa-globe-africa',dur:'10 min'},
+    {n:'Vacina Pneumocócica',d:'Protecção contra pneumonia bacteriana.',i:'ico-indigo',ic:'fa-lungs',dur:'10 min'},
+    {n:'Vacina HPV',d:'Prevenção do papilomavírus humano.',i:'ico-rose',ic:'fa-venus',dur:'10 min'},
+    {n:'Vacinação Infantil',d:'Revisão e actualização do plano vacinal da criança.',i:'ico-magenta',ic:'fa-baby',dur:'20 min'},
+  ],
+  urgencia:[
+    {n:'Triagem Rápida',d:'Avaliação inicial de urgência. Prioridade definida por enfermeiro.',i:'ico-rose',ic:'fa-bolt',dur:'15 min'},
+    {n:'Consulta de Urgência',d:'Atendimento médico prioritário para situações agudas não graves.',i:'ico-amber',ic:'fa-user-md',dur:'30 min'},
+    {n:'Sutura & Penso',d:'Tratamento de feridas, cortes e pensos cirúrgicos.',i:'ico-sky',ic:'fa-band-aid',dur:'20 min'},
+    {n:'Injectável / Soro',d:'Administração de medicação injectável, soros e hidratação.',i:'ico-teal',ic:'fa-tint',dur:'30 min'},
+  ],
+};
+
+const MONTHS=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const WDAYS=['D','S','T','Q','Q','S','S'];
+const STEP_LABELS=['Tipo de cuidado','Serviço','Data e hora','Dados pessoais','Confirmação'];
+const BUSY=['08:00','10:30','14:00','16:30'];
+const AM=['07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30'];
+const PM=['12:00','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00'];
+
+const TODAY=new Date();
+let S={type:null,typeLabel:null,svc:null,date:null,dateLbl:null,time:null,cy:TODAY.getFullYear(),cm:TODAY.getMonth(),doc:null,docUrl:null};
+let FV={name:false,dob:false,phone:false,email:true};
+let LAST_REF='';
+
+/* ── NAVBAR SCROLL ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>10);
+},{passive:true});
+
+/* ── KEYBOARD ACTIVATION for custom "button" divs (cards, days, slots) ── */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'||e.key===' '){
+    const el=e.target;
+    if(el && el.matches && el.matches('.type-card,.svc-card,.day.avail,.slot:not(.busy)')){
+      e.preventDefault();
+      el.click();
+    }
+  }
+});
+
+/* ── TOASTS ── */
+function showToast(msg,type){
+  type=type||'error';
+  const wrap=document.getElementById('toastWrap');
+  const t=document.createElement('div');
+  t.className='toast '+type;
+  const icon=type==='success'?'fa-circle-check':'fa-circle-exclamation';
+  t.innerHTML='<i class="fas '+icon+' t-ic" aria-hidden="true"></i><span></span>';
+  t.querySelector('span').textContent=msg;
+  wrap.appendChild(t);
+  setTimeout(()=>{t.classList.add('out');setTimeout(()=>t.remove(),250);},3800);
+}
+
+/* ── TYPE SELECT ── */
+function selectType(el,key,lbl){
+  document.querySelectorAll('.type-card').forEach(c=>{c.classList.remove('sel');c.setAttribute('aria-pressed','false');});
+  el.classList.add('sel'); el.setAttribute('aria-pressed','true');
+  S.type=key; S.typeLabel=lbl;
+  document.getElementById('btn1').disabled=false;
+}
+
+/* ── RENDER SERVICES ── */
+function renderSvcs(){
+  document.getElementById('svcGrid').innerHTML=SVCS[S.type].map(s=>`
+    <div class="svc-card" tabindex="0" role="button" aria-pressed="false" onclick="selSvc(this,'${s.n.replace(/'/g,"\\'")}')">
+      <div class="svc-radio"></div>
+      <div class="svc-icon ${s.i}"><i class="fas ${s.ic}" aria-hidden="true"></i></div>
+      <div class="svc-body">
+        <h5>${s.n}</h5>
+        <p>${s.d}</p>
+        <div class="svc-dur"><i class="far fa-clock" aria-hidden="true"></i> ${s.dur}</div>
+      </div>
+    </div>`).join('');
+  document.getElementById('p2title').innerHTML=`Escolha o <em>serviço</em> — ${S.typeLabel}`;
+  S.svc=null;
+  document.getElementById('btn2').disabled=true;
+}
+
+function selSvc(el,name){
+  document.querySelectorAll('.svc-card').forEach(c=>{c.classList.remove('sel');c.setAttribute('aria-pressed','false');});
+  el.classList.add('sel'); el.setAttribute('aria-pressed','true');
+  S.svc=name;
+  document.getElementById('btn2').disabled=false;
+}
+
+/* ── CALENDAR ── */
+function renderCal(){
+  document.getElementById('calMonth').textContent=MONTHS[S.cm]+' '+S.cy;
+  const first=new Date(S.cy,S.cm,1).getDay();
+  const total=new Date(S.cy,S.cm+1,0).getDate();
+  let h=WDAYS.map(d=>`<div class="cal-head">${d}</div>`).join('');
+  for(let i=0;i<first;i++) h+=`<div class="day empty"></div>`;
+  for(let d=1;d<=total;d++){
+    const dt=new Date(S.cy,S.cm,d);
+    const past=dt<new Date(TODAY.getFullYear(),TODAY.getMonth(),TODAY.getDate());
+    const isToday=dt.toDateString()===TODAY.toDateString();
+    const isSel=S.date===`${S.cy}-${S.cm}-${d}`;
+    const isWE=dt.getDay()===0||dt.getDay()===6;
+    let cls='day'+(past?' past':' avail')+(isToday?' today':'')+(isSel?' sel':'')+(isWE&&!isSel?' weekend':'');
+    h+=`<div class="${cls}" ${!past?`tabindex="0" role="button" aria-label="${d} de ${MONTHS[S.cm]}" onclick="pickDay(${d})"`:'aria-hidden="true"'}>${d}</div>`;
+  }
+  document.getElementById('calGrid').innerHTML=h;
+}
+
+function calNav(d){
+  S.cm+=d; if(S.cm>11){S.cm=0;S.cy++;} if(S.cm<0){S.cm=11;S.cy--;} renderCal();
+}
+
+function pickDay(d){
+  S.date=`${S.cy}-${S.cm}-${d}`; S.dateLbl=`${d} de ${MONTHS[S.cm]} de ${S.cy}`; S.time=null;
+  renderCal(); renderSlots();
+  document.getElementById('sum-date').textContent=S.dateLbl;
+  document.getElementById('sum-time').textContent='Não seleccionado';
+  chk3();
+}
+
+/* ── SLOTS ── */
+function renderSlots(){
+  document.getElementById('slotsEmpty').style.display='none';
+  document.getElementById('slotsContent').style.display='block';
+  ['AM','PM'].forEach(p=>{
+    document.getElementById('slots'+p).innerHTML=(p==='AM'?AM:PM).map(t=>{
+      const b=BUSY.includes(t);
+      const sel=S.time===t;
+      return`<div class="slot${b?' busy':''}${sel?' sel':''}" ${!b?`tabindex="0" role="button" aria-pressed="${sel}" onclick="pickSlot(this,'${t}')"`:'aria-disabled="true"'}>${t}</div>`;
+    }).join('');
+  });
+}
+
+function pickSlot(el,t){
+  document.querySelectorAll('.slot').forEach(s=>{s.classList.remove('sel');s.setAttribute('aria-pressed','false');});
+  el.classList.add('sel'); el.setAttribute('aria-pressed','true'); S.time=t;
+  document.getElementById('sum-time').textContent=t;
+  chk3();
+}
+
+function chk3(){ document.getElementById('btn3').disabled=!(S.date&&S.time); }
+
+/* ── FORM VALIDATION ── */
+function setErr(id,show,input){
+  document.getElementById('er-'+id).classList.toggle('on',show);
+  if(input) input.classList.toggle('err',show);
+}
+
+function vName(el){
+  const ok=el.value.trim().length>=3;
+  FV.name=ok; setErr('name',!ok&&el.value!=='',el); chk4();
+}
+
+function vDOB(el){
+  if(!el.value){FV.dob=false;setErr('dob',false,el);chk4();return;}
+  const d=new Date(el.value);
+  const yesterday=new Date(TODAY); yesterday.setDate(yesterday.getDate()-1);
+  const ok=d<=yesterday;
+  FV.dob=ok; setErr('dob',!ok,el); chk4();
+}
+
+function vPhone(el){
+  if(el.value===''){FV.phone=false;setErr('phone',false,el);chk4();return;}
+  let digits=el.value.replace(/\D/g,'');
+  if(digits.startsWith('258')) digits=digits.slice(3);
+  const ok=/^8[2-7]\d{7}$/.test(digits);
+  FV.phone=ok; setErr('phone',!ok,el); chk4();
+}
+
+function vEmail(el){
+  if(!el.value){FV.email=true;setErr('email',false,el);chk4();return;}
+  const ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
+  FV.email=ok; setErr('email',!ok,el); chk4();
+}
+
+function chk4(){ document.getElementById('btn4').disabled=!(FV.name&&FV.dob&&FV.phone&&FV.email); }
+
+/* ── FILE UPLOAD ── */
+function onDragOver(e){e.preventDefault();document.getElementById('uploadZone').classList.add('over')}
+function onDragLeave(){document.getElementById('uploadZone').classList.remove('over')}
+function onDrop(e){e.preventDefault();document.getElementById('uploadZone').classList.remove('over');if(e.dataTransfer.files[0])processFile(e.dataTransfer.files[0]);}
+function onFileSelect(input){if(input.files[0])processFile(input.files[0]);}
+
+function processFile(f){
+  if(f.size>5*1024*1024){showToast('O ficheiro excede o limite de 5 MB.','error');return;}
+  if(!['image/jpeg','image/png','image/gif','application/pdf'].includes(f.type)){showToast('Formato não suportado. Use JPG, PNG ou PDF.','error');return;}
+  S.doc=f;
+  document.getElementById('fDocName').textContent=f.name;
+  document.getElementById('fDocSize').textContent=f.size<1024*1024?Math.round(f.size/1024)+' KB':(f.size/(1024*1024)).toFixed(1)+' MB';
+  const thumb=document.getElementById('fileThumb');
+  if(S.docUrl){URL.revokeObjectURL(S.docUrl);S.docUrl=null;}
+  if(f.type.startsWith('image/')){
+    S.docUrl=URL.createObjectURL(f);
+    thumb.innerHTML=`<img src="${S.docUrl}" alt="">`;
+  }else{
+    thumb.innerHTML='<i class="fas fa-file-pdf" aria-hidden="true"></i>';
+  }
+  document.getElementById('uploadPreview').classList.add('on');
+  document.getElementById('uploadZone').style.display='none';
+}
+
+function removeFile(){
+  S.doc=null;
+  if(S.docUrl){URL.revokeObjectURL(S.docUrl);S.docUrl=null;}
+  document.getElementById('uploadPreview').classList.remove('on');
+  document.getElementById('uploadZone').style.display='';
+  document.getElementById('fDoc').value='';
+}
+
+/* ── CONFIRM ── */
+function fillConfirm(){
+  document.getElementById('cf-type').textContent=S.typeLabel;
+  document.getElementById('cf-svc').textContent=S.svc;
+  document.getElementById('cf-date').textContent=S.dateLbl||'—';
+  document.getElementById('cf-time').textContent=S.time||'—';
+  document.getElementById('cf-name').textContent=document.getElementById('fName').value;
+  document.getElementById('cf-phone').textContent=document.getElementById('fPhone').value;
+  const dr=document.getElementById('cf-doc-row');
+  if(S.doc){dr.style.display='flex';document.getElementById('cf-doc').textContent=S.doc.name;}
+  else dr.style.display='none';
+}
+
+/* ── BREADCRUMB ── */
+function buildBc(step){
+  const parts=[];
+  if(S.typeLabel) parts.push(`<strong>${S.typeLabel}</strong>`);
+  if(step>=3&&S.svc){parts.push('<span class="bcrumb-sep">›</span>');parts.push(`<strong>${S.svc}</strong>`);}
+  if(step>=4&&S.dateLbl){parts.push('<span class="bcrumb-sep">›</span>');parts.push(`<strong>${S.dateLbl} às ${S.time}</strong>`);}
+  const el=document.getElementById('bc'+step);
+  if(el) el.innerHTML='<div class="bcrumb">'+parts.join('')+'</div>';
+}
+
+/* ── STEP SYNC ── */
+function syncSteps(n){
+  const pct=Math.max(0,Math.min(4,n-1))/4*100;
+  document.getElementById('stepFill').style.width=pct+'%';
+  for(let i=1;i<=5;i++){
+    const it=document.getElementById('step'+i);
+    if(!it) continue;
+    it.classList.remove('active','done');
+    if(i<n) it.classList.add('done');
+    else if(i===n) it.classList.add('active');
+  }
+  const announce=document.getElementById('stepAnnounce');
+  if(n<=5) announce.textContent=`Passo ${n} de 5: ${STEP_LABELS[n-1]}`;
+  else announce.textContent='Marcação confirmada';
+}
+
+/* ── NAVIGATION ── */
+function goStep(n){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('visible'));
+  if(n===2){renderSvcs();buildBc(2);}
+  if(n===3){
+    buildBc(3);
+    document.getElementById('sum-type').textContent=S.typeLabel;
+    document.getElementById('sum-svc').textContent=S.svc;
+    if(S.dateLbl) document.getElementById('sum-date').textContent=S.dateLbl;
+    if(S.time) document.getElementById('sum-time').textContent=S.time;
+    renderCal();
+    if(S.date){renderSlots();}else{document.getElementById('slotsEmpty').style.display='';document.getElementById('slotsContent').style.display='none';}
+    chk3();
+  }
+  if(n===4) buildBc(4);
+  if(n===5) fillConfirm();
+  const t=document.getElementById(n>=6?'pSuccess':'p'+n);
+  if(t) t.classList.add('visible');
+  syncSteps(n);
+}
+
+function submitBooking(){
+  const ref='MC-'+new Date().getFullYear()+'-'+Math.random().toString(36).substring(2,8).toUpperCase();
+  LAST_REF=ref;
+  document.getElementById('refCode').textContent=ref;
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('visible'));
+  document.getElementById('pSuccess').classList.add('visible');
+  syncSteps(6);
+}
+
+/* ── COPY REFERENCE ── */
+function copyRef(){
+  const code=document.getElementById('refCode').textContent;
+  if(!code||code==='—') return;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(code).then(()=>showToast('Referência copiada!','success')).catch(()=>showToast('Não foi possível copiar a referência.','error'));
+  }else{
+    showToast('Não foi possível copiar a referência.','error');
+  }
+}
+
+/* ── ADD TO CALENDAR (.ics) ── */
+function pad(n){return n<10?'0'+n:''+n;}
+
+function getDurationMinutes(){
+  const list=SVCS[S.type]||[];
+  const found=list.find(s=>s.n===S.svc);
+  if(!found) return 30;
+  const m=parseInt(found.dur,10);
+  return isNaN(m)?30:m;
+}
+
+function downloadIcs(){
+  if(!S.date||!S.time){showToast('Não há dados suficientes para gerar o convite.','error');return;}
+  const parts=S.date.split('-');
+  const y=parseInt(parts[0],10), mo=parseInt(parts[1],10), d=parseInt(parts[2],10);
+  const tparts=S.time.split(':').map(Number);
+  const start=new Date(y,mo,d,tparts[0],tparts[1]);
+  const end=new Date(start.getTime()+getDurationMinutes()*60000);
+  const fmt=dt=>`${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
+  const now=new Date();
+  const stamp=`${now.getUTCFullYear()}${pad(now.getUTCMonth()+1)}${pad(now.getUTCDate())}T${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}${pad(now.getUTCSeconds())}Z`;
+  const lines=[
+    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//MediCo//Marcacao Online//PT','CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT',
+    `UID:${LAST_REF||'medico'}@medico.co.mz`,
+    `DTSTAMP:${stamp}`,
+    `DTSTART:${fmt(start)}`,
+    `DTEND:${fmt(end)}`,
+    `SUMMARY:${S.svc} — MediCo`,
+    `DESCRIPTION:${S.typeLabel}. Referencia ${LAST_REF}. Apresente-se 10 minutos antes.`,
+    'LOCATION:Clinica MediCo',
+    'END:VEVENT','END:VCALENDAR'
+  ];
+  const blob=new Blob([lines.join('\r\n')],{type:'text/calendar;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download='marcacao-medico-'+(LAST_REF||'evento')+'.ics';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),2000);
+  showToast('Convite de calendário descarregado.','success');
+}
+
+function resetAll(){
+  S={type:null,typeLabel:null,svc:null,date:null,dateLbl:null,time:null,cy:TODAY.getFullYear(),cm:TODAY.getMonth(),doc:null,docUrl:null};
+  FV={name:false,dob:false,phone:false,email:true};
+  ['fName','fDOB','fPhone','fEmail','fNotes'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  ['fName','fDOB','fPhone','fEmail'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('err');});
+  document.getElementById('fGender').value='';
+  document.querySelectorAll('.err-msg').forEach(e=>e.classList.remove('on'));
+  removeFile();
+  document.getElementById('btn4').disabled=true;
+  document.getElementById('btn1').disabled=true;
+  document.querySelectorAll('.type-card').forEach(c=>{c.classList.remove('sel');c.setAttribute('aria-pressed','false');});
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('visible'));
+  document.getElementById('p1').classList.add('visible');
+  syncSteps(1);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── DOB LIMITS ── */
+(function(){
+  const dob=document.getElementById('fDOB');
+  const y=new Date(TODAY); y.setDate(y.getDate()-1);
+  dob.max=y.toISOString().split('T')[0];
+  const min=new Date(TODAY); min.setFullYear(min.getFullYear()-120);
+  dob.min=min.toISOString().split('T')[0];
+})();
+</script>
+</body>
+</html>
